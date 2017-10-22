@@ -3,9 +3,9 @@
 namespace SanthoshKorukonda;
 
 use InvalidArgumentException;
-use SanthoshKorukonda\Ambassador\Contracts\TexterContract;
-use SanthoshKorukonda\Ambassador\Contracts\MessageContract;
-use SanthoshKorukonda\Ambassador\Contracts\TransportContract;
+use SanthoshKorukonda\Contracts\TexterContract;
+use SanthoshKorukonda\Contracts\MessageContract;
+use SanthoshKorukonda\Contracts\TransportContract;
 
 class Msg91Client implements TexterContract
 {

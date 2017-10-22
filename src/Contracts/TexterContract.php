@@ -1,6 +1,6 @@
 <?php
 
-namespace SanthoshKorukonda\Ambassador\Contracts;
+namespace SanthoshKorukonda\Contracts;
 
 interface TexterContract
 {

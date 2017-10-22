@@ -4,8 +4,8 @@ namespace SanthoshKorukonda;
 
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Client as HttpClient;
-use SanthoshKorukonda\Ambassador\Contracts\MessageContract;
-use SanthoshKorukonda\Ambassador\Contracts\TransportContract;
+use SanthoshKorukonda\Contracts\MessageContract;
+use SanthoshKorukonda\Contracts\TransportContract;
 
 class Msg91Transport implements TransportContract
 {
