@@ -2,17 +2,16 @@
 
 namespace SanthoshKorukonda;
 
-use InvalidArgumentException;
-use SanthoshKorukonda\Contracts\TexterContract;
+use SanthoshKorukonda\Contracts\ClientContract;
 use SanthoshKorukonda\Contracts\MessageContract;
 use SanthoshKorukonda\Contracts\TransportContract;
 
-class Msg91Client implements TexterContract
+class Msg91Client implements ClientContract
 {
     /**
      * Transport driver to text the message.
      *
-     * @var \SanthoshKorukonda\Ambassador\Contracts\TransportContract
+     * @var \SanthoshKorukonda\Contracts\TransportContract
      */
     protected $transport;
 
@@ -28,42 +27,25 @@ class Msg91Client implements TexterContract
     }
 
     /**
-     * Set the "to" address on the message.
-     *
-     * @param  mixed  $users
-     * @param  string  $property
-     * @return $this
-     */
-    public function to($users, string $property = "mobile")
-    {
-        $this->message->to($users, $property);
-
-        return $this;
-    }
-
-    /**
      * Begin the process of texting a textable class instance.
      *
-     * @param  \SanthoshKorukonda\Ambassador\Contracts\TextableContract  $textable
+     * @param  \SanthoshKorukonda\Contracts\MessageContract  $message
      * @return mixed
      */
-    public function send(TextableContract $textable)
+    public function send(MessageContract $message)
     {
-        $message = $textable->build($this->message);
-
         return $this->transport->send($message);
     }
 
     /**
      * Send a flash message of the textable class instance.
      *
-     * @param  \SanthoshKorukonda\Ambassador\Contracts\TextableContract  $textable
+     * @param  \SanthoshKorukonda\Contracts\MessageContract $message
      * @return mixed
      */
-    public function sendFlashMessage(TextableContract $textable)
+    public function sendFlashMessage(MessageContract $message)
     {
-        $this->message->flash(true);
-        $message = $textable->build($this->message);
+        $message->flash(true);
 
         return $this->transport->send($message);
     }
@@ -71,13 +53,12 @@ class Msg91Client implements TexterContract
     /**
      * Send a unicode message of the textable class instance.
      *
-     * @param  \SanthoshKorukonda\Ambassador\Contracts\TextableContract  $textable
+     * @param  \SanthoshKorukonda\Contracts\MessageContract $message
      * @return mixed
      */
-    public function sendUnicodeMessage(TextableContract $textable)
+    public function sendUnicodeMessage(MessageContract $message)
     {
-        $this->message->unicode(true);
-        $message = $textable->build($this->message);
+        $message->unicode(true);
 
         return $this->transport->send($message);
     }
