@@ -100,7 +100,7 @@ class Msg91Message implements MessageContract
      */
     public function getFrom()
     {
-        return $this->from ?: config('ambassador.from');
+        return $this->from ?: null;
     }
 
     /**
@@ -251,7 +251,7 @@ class Msg91Message implements MessageContract
      */
     protected function getCountry()
     {
-        return (int) $this->country ?: config('ambassador.default_country');
+        return (int) $this->country ?: null;
     }
 
     /**
